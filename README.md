@@ -5,7 +5,7 @@
 
 <img src="./system_architecture.svg" width="1000"/>
 
-## Table of Contents
+## 📜 Table of Contents
 
 - [Introduction](#introduction)
 - [Build K3s for Master Node](#build-k3s-for-master-node)
@@ -20,7 +20,7 @@ To manage multiple containerized applications, we chose K3s, a lightweight Kuber
 <br>
 
 
-## Build K3s for Master Node
+## 🔨 Build K3s for Master Node
 
 <br>
 
@@ -47,7 +47,7 @@ cd k3s
 grep "^go " go.mod
 ```
 
-### Install Go
+### 💽 Install Go
 ```bash
 wget https://go.dev/dl/go1.21.7.linux-arm64.tar.gz
 
@@ -82,7 +82,7 @@ require (
 replace k8s.io/kubernetes => github.com/<your-user>/kubernetes v1.27.11
 ```
 
-### Build K3s
+### 🔨 Build K3s
 ```bash
 go mod tidy
 
@@ -104,7 +104,7 @@ export INSTALL_K3S_SKIP_DOWNLOAD=true
 source ~/.bashrc
 ```
 
-### Install Custom K3s by binary file
+### 💽 Install Custom K3s by binary file
 ```bash
 sudo cp ./bin/k3s /usr/local/bin/k3s
 
@@ -153,7 +153,7 @@ sudo kubectl get nodes -o wide
 This command checks whether the master node has successfully joined the cluster and is in the Ready state.
 It also displays network information, such as internal/external IP addresses and container runtime.
 
-## Build K3s for Worker Node
+## 🔨 Build K3s for Worker Node
 Kubernetes and K3s are composed of a master node and one or more worker nodes.
 The steps above complete the installation of K3s on the master node.
 To form the same Kubernetes cluster across the worker nodes, K3s must also be installed on each worker node.
@@ -210,7 +210,7 @@ K3S_TOKEN=K10696f88f6a4282fad2ff3942d63ad753ee8225ef493e08a7eff113322da6e49be::s
 sh -s - --docker --node-name=worker-node2 --node-ip=192.168.2.102
 ```
 
-#### Explanation of each component:
+#### 📢 Explanation of each component:
 
 * INSTALL_K3S_SKIP_DOWNLOAD=true: Prevents the script from downloading the official K3s binary; uses the custom one already installed.
 
@@ -226,7 +226,7 @@ sh -s - --docker --node-name=worker-node2 --node-ip=192.168.2.102
 
 Make sure you have already copied the custom k3s binary to /usr/local/bin/k3s before running this command.
 
-### Verify K3s Install Success
+### ✅ Verify K3s Install Success
 After installation, check that the K3s agent is running properly on the worker node:
 ```bash
 sudo systemctl status k3s-agent
